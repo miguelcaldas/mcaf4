@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -22,6 +23,14 @@ namespace mcaf4 {
       }
 
       return name == null ? req.CreateResponse(HttpStatusCode.BadRequest, "Please pass a name on the query string or in the request body") : req.CreateResponse(HttpStatusCode.OK, "Hello " + name);
+    }
+  }
+  public static class Function2
+  {
+    [FunctionName("Function2")]
+    public static void Run([TimerTrigger("0 */5 * * * *")]TimerInfo myTimer, TraceWriter log)
+    {
+      log.Info($"C# Timer trigger function executed at: {DateTime.Now}");
     }
   }
 }
